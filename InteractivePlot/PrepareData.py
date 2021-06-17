@@ -34,7 +34,7 @@ import pandas as pd
 import umap.umap_ as umap
 
 #Internal import
-from models import SIMCLR
+#from models import SIMCLR
 
 class PrepareData:
     '''
@@ -65,7 +65,8 @@ class PrepareData:
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
         if device == 'cuda':
             print('Using CUDA')
-            model = SIMCLR.SIMCLR.load_from_checkpoint(MODEL_PATH)
+            model = load_from_checkpoint(MODEL_PATH)
+            #model = SIMCLR.SIMCLR.load_from_checkpoint(MODEL_PATH)
         else: 
             print('Using CPU')
             model = torch.load(MODEL_PATH, map_location = torch.device('cpu'))
