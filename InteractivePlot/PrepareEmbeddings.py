@@ -34,7 +34,7 @@ import pandas as pd
 import umap.umap_ as umap
 
 #Internal import
-from models import SIMCLR, CLASSIFIER
+#from models import SIMCLR, CLASSIFIER
 
 class PrepareEmbeddings:
     '''
@@ -66,9 +66,10 @@ class PrepareEmbeddings:
         if device == 'cuda':
             print('Using CUDA')
             if 'CLASSIFIER' in MODEL_PATH:
-                model = CLASSIFIER.CLASSIFIER.load_from_checkpoint(MODEL_PATH)
-            else:
-                model = SIMCLR.SIMCLR.load_from_checkpoint(MODEL_PATH)
+                model = load_from_checkpoint(MODEL_PATH)
+                #model = CLASSIFIER.CLASSIFIER.load_from_checkpoint(MODEL_PATH)
+            #else:
+            #    model = SIMCLR.SIMCLR.load_from_checkpoint(MODEL_PATH)
         else: 
             print('Using CPU')
             model = torch.load(MODEL_PATH, map_location = torch.device('cpu'))
